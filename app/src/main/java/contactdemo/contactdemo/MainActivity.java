@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView  = (ListView) findViewById(R.id.listView);
         iv_main_words = (IndexView) findViewById(R.id.iv_main_words);
-//        tv_main_word = (TextView) findViewById(R.id.tv_main_word);
+        tv_main_word = (TextView) findViewById(R.id.tv_main_word);
 
         initData();
         adapter = new Myadapter();
@@ -44,39 +44,39 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onIndeChange(String word) {
-//            updateWord(word);
-//            updatelist(word);
+            updateWord(word);
+            updatelist(word);
         }
     }
 
-//    private void updatelist(String word) {
-//        for (int i = 0 ;i <persons.size();i++){
-//            String listwords = persons.get(i).getPinyin().substring(0,1);
-//            //传入一个index整型数值，就可以让ListView定位到指定Item的位置。
-//            if(word.equals(listwords)) {
-//                listView.setSelection(i);
-//                return;
-//            }
-//        }
-//    }
+    private void updatelist(String word) {
+        for (int i = 0 ;i <persons.size();i++){
+            String listwords = persons.get(i).getPinyin().substring(0,1);
+            //传入一个index整型数值，就可以让ListView定位到指定Item的位置。
+            if(word.equals(listwords)) {
+                listView.setSelection(i);
+                return;
+            }
+        }
+    }
 
-//    private void updateWord(String word) {
-//        tv_main_word.setText(word);
-//        tv_main_word.setVisibility(View.VISIBLE);
-//        handler.removeCallbacksAndMessages(null);
-//        /**
-//         * 这个方法是说handler发个两秒的消息  两秒后再执行Runnable的对象
-//         * 使用PostDelayed方法，两秒后调用此Runnable对象
-//         * handler.postDelayed(runnable, 2000);
-//         * 实际上也就实现了一个2s的一个定时器
-//         */
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                tv_main_word.setVisibility(View.GONE);
-//            }
-//        }, 2000);
-//    }
+    private void updateWord(String word) {
+        tv_main_word.setText(word);
+        tv_main_word.setVisibility(View.VISIBLE);
+        handler.removeCallbacksAndMessages(null);
+        /**
+         * 这个方法是说handler发个两秒的消息  两秒后再执行Runnable的对象
+         * 使用PostDelayed方法，两秒后调用此Runnable对象
+         * handler.postDelayed(runnable, 2000);
+         * 实际上也就实现了一个2s的一个定时器
+         */
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tv_main_word.setVisibility(View.GONE);
+            }
+        }, 2000);
+    }
 
     public class Myadapter extends BaseAdapter {
 
@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
     private void initData() {
         persons = new ArrayList<>();
         persons.add(new Person("张晓飞"));
-        persons.add(new Person("杨光福"));
         persons.add(new Person("胡继群"));
         persons.add(new Person("刘畅"));
 

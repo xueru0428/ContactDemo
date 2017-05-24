@@ -33,7 +33,7 @@ public class IndexView extends View {
         super(context, attrs);
         paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.BLUE);
         //设置字体
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setTextSize(30);
